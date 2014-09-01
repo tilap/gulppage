@@ -1,6 +1,6 @@
 var root = __dirname,
     // Allow to fast switch between projects by changing just that var
-    src = 'src-sample';
+    src = 'src';
 
 module.exports = {
     server: {
