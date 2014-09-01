@@ -1,0 +1,136 @@
+var root = __dirname;
+
+module.exports = {
+    server: {
+        port: 4000
+    },
+    livereload: {
+        port: 4002
+    },
+    paths: {
+        export: '',
+        less: {
+            src: root + '/src/stylesheet',
+            tmp: root + '/tmp/stylesheet',
+            dist: root + '/dist/stylesheet'
+        },
+        js: {
+            src: root + '/src/js',
+            tmp: root + '/tmp/js',
+            dist: root + '/dist/js'
+        },
+        fonts: {
+            src: root + '/src/fonts',
+            dist: root + '/dist/fonts'
+        },
+        html: {
+            src: root + '/src/html',
+            dist: root + '/dist/'
+        },
+        assets: {
+            src: root + '/src/assets',
+            dist: root + '/dist/assets'
+        }
+    },
+    style: {
+        linter: {
+            // see https://github.com/sindresorhus/gulp-recess
+            options: {
+                includePath: ['vendor'],
+                strictPropertyOrder: true,
+                noIDs: true,
+                noJSPrefix: true,
+                noOverqualifying: true,
+                noUnderscores: true,
+                noUniversalSelectors: true,
+                zeroUnits: true,
+            }
+        },
+        compilation: {
+            less: {
+                // see http://lesscss.org/usage/#command-line-usage
+                // note: no sourcemap according to https://github.com/plus3network/gulp-less
+                options: {
+                    compress: true,
+                    cleancss: true,
+                    strictImports: true,
+                    strictUnits: true,
+                    strictMath: false,
+                    sourceMap: true,
+                    globalVar: '',
+                    modifyVars: {},
+                    paths: ['vendor']
+                }
+            },
+        }
+    },
+    js: {
+        linter:{
+            options: {}
+        },
+        compilation: {
+            browserify: {
+                enabled: true,
+                options: {}
+            },
+            concat: {
+                enabled: true,
+                filename: 'bundle.js'
+            },
+            uglify: {
+                enabled: true,
+                options: {
+                    compress: true,
+                    preserveComments: 'some'
+                }
+            },
+            external: {
+                'vendor.js' : [
+                    'vendor/bootstrap/js/dropdown.js'
+                ]
+            }
+        }
+    },
+    html: {
+        linter: {
+            options: {
+                'tagname-lowercase': true,
+                'attr-lowercase': true,
+                'attr-value-double-quotes': true,
+                'attr-value-not-empty': true,
+                'attr-no-duplication': true,
+                'doctype-first': true,
+                'tag-pair': true,
+                'tag-self-close': true,
+                'spec-char-escape': true,
+                'id-unique': true,
+                'src-not-empty': true,
+                'head-script-disabled': false,
+                'img-alt-require': true,
+                'doctype-html5': true,
+                'id-class-value': false,
+                'style-disabled': true,
+                'space-tab-mixed-disabled': false,
+                'id-class-ad-disabled': false,
+                'href-abs-or-rel': false,
+                'attr-unsafe-chars': false,
+                'csslint': false,
+                'jshint': false
+            }
+        },
+        compilation: {
+            htmlmin: {
+                enabled: true,
+                options: {
+
+                }
+            }
+        }
+    },
+    assets: {
+        images: {
+            compression: 5
+        }
+    }
+};
+
