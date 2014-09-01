@@ -49,13 +49,22 @@
                 <img src="assets/home-office.jpg" class="img-responsive" />
             </div>
             <div class="col-md-7 md">
-                @@include(markdown('./includes/description.md'))
+                <h2>Nice cool **gulp recipes** all together</h2>
+            @@include(markdown('./includes/description.md'))
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <blockquote>This page is almost ridiculous but let you see code sample with most of gulp tasks working: less w/ vars, browserify, asset optim, live-reload, markdown integration and so on.</blockquote>
+            @@include(markdown('./includes/features.md'))
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <hr />
+                <blockquote>This page is almost ridiculous but let you see code sample with most of gulp tasks working: less w/ vars, browserify, asset optim, live-reload, markdown integration and so on.<br />
+                Content is from the project README page. No marketing, just dev explaination.</blockquote>
             </div>
         </div>
     </div>
