@@ -125,10 +125,7 @@ module.exports = {
                 // See https://github.com/kangax/html-minifier#options-quick-reference
                 options: {
                     collapseWhitespace: true,
-                    conservativeCollapse: true,
-                    removeAttributeQuotes: true,
-                    useShortDoctype: true,
-                    removeRedundantAttributes: true
+                    conservativeCollapse: true
                 }
             }
         }
