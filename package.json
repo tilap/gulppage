@@ -38,7 +38,6 @@
     "node-notifier": "3.1.x",
     "tiny-lr": "0.1.x",
     "bower": "1.3.x",
-    "event-stream": "^3.1.7",
     "gulp-rev": "^1.1.0",
     "gulp-usemin": "^0.3.8",
     "gulp-file-include": "^0.4.2",

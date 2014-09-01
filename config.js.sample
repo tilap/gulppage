@@ -1,4 +1,6 @@
-var root = __dirname;
+var root = __dirname,
+    // Allow to fast switch between projects by changing just that var
+    src = 'src-sample';
 
 module.exports = {
     server: {
@@ -10,25 +12,25 @@ module.exports = {
     paths: {
         export: '',
         less: {
-            src: root + '/src/stylesheet',
+            src: root + '/' + src+ '/stylesheet',
             tmp: root + '/tmp/stylesheet',
             dist: root + '/dist/stylesheet'
         },
         js: {
-            src: root + '/src/js',
+            src: root + '/' + src + '/js',
             tmp: root + '/tmp/js',
             dist: root + '/dist/js'
         },
         fonts: {
-            src: root + '/src/fonts',
+            src: root + '/' + src + '/fonts',
             dist: root + '/dist/fonts'
         },
         html: {
-            src: root + '/src/html',
+            src: root + '/' + src + '/html',
             dist: root + '/dist/'
         },
         assets: {
-            src: root + '/src/assets',
+            src: root + '/' + src + '/assets',
             dist: root + '/dist/assets'
         }
     },
@@ -66,9 +68,11 @@ module.exports = {
     },
     js: {
         linter:{
+            // See http://jshint.com/docs
             options: {}
         },
         compilation: {
+            // See https://www.npmjs.org/package/gulp-browserify
             browserify: {
                 enabled: true,
                 options: {}
@@ -79,20 +83,17 @@ module.exports = {
             },
             uglify: {
                 enabled: true,
+                // See https://github.com/terinjokes/gulp-uglify
                 options: {
                     compress: true,
                     preserveComments: 'some'
                 }
-            },
-            external: {
-                'vendor.js' : [
-                    'vendor/bootstrap/js/dropdown.js'
-                ]
             }
         }
     },
     html: {
         linter: {
+            // See https://github.com/yaniswang/HTMLHint/wiki/Rules
             options: {
                 'tagname-lowercase': true,
                 'attr-lowercase': true,
@@ -121,8 +122,13 @@ module.exports = {
         compilation: {
             htmlmin: {
                 enabled: true,
+                // See https://github.com/kangax/html-minifier#options-quick-reference
                 options: {
-
+                    collapseWhitespace: true,
+                    conservativeCollapse: true,
+                    removeAttributeQuotes: true,
+                    useShortDoctype: true,
+                    removeRedundantAttributes: true
                 }
             }
         }

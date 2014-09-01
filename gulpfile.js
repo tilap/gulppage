@@ -10,8 +10,6 @@ var gulp = require('gulp'),
     notification = require('node-notifier'),
     $ = require('gulp-load-plugins')(),
     logger = require('node-human-logger'),
-    fs = require('fs'),
-    eventStream = require('event-stream'),
     markdown = require('markdown'),
     mkdirp = require('mkdirp');
 
@@ -193,43 +191,6 @@ gulp.task('js', ['js:lint'], function() {
 
         // Move to dist folder
         .pipe(gulp.dest(config.paths.js.tmp));
-});
-
-gulp.task('js:external', function() {
-    var src = config.js.compilation.external || {},
-        task = this;
-    return eventStream.merge.apply(eventStream, Object.keys(src).map(function(dest) {
-        var files = this[dest];
-        logger.info('Compiling external js file ' + dest, null, 'gulp js:external');
-
-        // Check all files exist
-        for(var k in files) {
-            if(!fs.existsSync(files[k])) {
-                logger.error('> file ' + files[k] + ' not found', null, 'gulp js:external');
-                task.emit('end');
-            }
-            else {
-                logger.info('include file ' + files[k], null, 'gulp js:external');
-            }
-        }
-
-        gulp.src(files)
-            .pipe($.concat(dest))
-            .pipe($.uglify({
-                mangle: false,
-                compress: true,
-                output: {
-                    beautify: false
-                }
-            })
-            .on('error', function(err) {
-                console.log(err);
-                // _log('Js Uglify', 'Error while uglifying js', 'error');
-                this.emit('end');
-            }))
-            .pipe(gulp.dest( config.paths.js.dist  ));
-
-    }, src));
 });
 
 // Clean compiled javascript
