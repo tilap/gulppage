@@ -50,9 +50,8 @@ For any bug or feature query, please report to the [github project](https://gith
 To install in a "mylanding" folder, use shell command and run:
 
 ```
-mkdir mylanding
+git clone https://github.com/tilap/gulppage.git mylanding
 cd mylanding
-git clone https://github.com/tilap/gulppage.git .
 make install
 ```
 
@@ -88,7 +87,7 @@ be importer. If you host your own fontelle server, edit the makefile option.
 
 ## Sample / Demo
 
-If you wanna see a basic usage sample, run the project by with src-sample (remove src folder and rename src-sample to src, or edit the config.js file). You'll see a really basic example with less working (bootstrap integration), browserify, a stupid image asset and an icon.
+If you wanna see a basic usage sample, run the project by with src-sample (remove src folder and rename src-sample to src, or edit the config.js file). You'll have a really basic example with less working (bootstrap integration), browserify, a stupid image asset and an icon. You can sse the result on [this page](http://tilap.github.io/gulppage/).
 
 ## Tip's
 
