@@ -273,7 +273,6 @@ gulp.task('html:clean', function(){
 
 // Optimize assets
 gulp.task('assets', function() {
-    console.log(config.paths.assets.src);
     return gulp.src(config.paths.assets.src + '/**/*')
         .pipe($.imagemin(config.assets.images.compression))
         .pipe(gulp.dest(config.paths.assets.dist));
